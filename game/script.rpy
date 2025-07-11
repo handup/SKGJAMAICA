@@ -24,9 +24,12 @@ label start:
 
     # These display lines of dialogue.
 
-    e "You've created a new Ren'Py game."
+    e "Please stop working on this game."
 
-    e "Once you add a story, pictures, and music, you can release it to the world!"
+    e "Andrei is mentally ill and he will break you if you let him."
+    
+    e "Even helping him out of politeness is enough to jeopardize you."
+
 
     # This ends the game.
 
