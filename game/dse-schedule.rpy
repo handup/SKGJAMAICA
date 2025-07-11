@@ -21,7 +21,7 @@ init python:
     register_stat("Relaxation", "relaxation", hidden=True)
 
     dp_period("Morning", "morning_act")
-    dp_choice("Train", "class")
+    dp_choice("Train", "train")
     dp_choice("Fight Orcs", "cut")
     
     # This is an example of an event that should only show up under special circumstances
