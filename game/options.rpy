@@ -1,4 +1,11 @@
-﻿## This file contains options that can be changed to customize your game.
+﻿##
+# Options file for the sample DSE game. If you have your own options.rpy
+# file, you can delete this one.
+#
+######################################################################
+
+
+## This file contains options that can be changed to customize your game.
 ##
 ## Lines beginning with two '#' marks are comments, and you shouldn't uncomment
 ## them. Lines beginning with a single '#' mark are commented-out code, and you
@@ -12,7 +19,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("SKGJAMAICA")
+define config.name = _("Dating Sim Engine")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
@@ -23,28 +30,26 @@ define gui.show_name = True
 
 ## The version of the game.
 
-define config.version = "1.0"
+define config.version = "4.0"
 
 
-## Text that is placed on the game's about screen. Place the text between the
-## triple-quotes, and leave a blank line between paragraphs.
+## Text that is placed on the game's about screen. To insert a blank line
+## between paragraphs, write \n\n.
 
-define gui.about = _p("""
-""")
+define gui.about = _("Ren'Py Dating Sim Engine\n\nBy renpytom, maintained by Andrea Landaker")
 
 
 ## A short name for the game used for executables and directories in the built
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,
 ## or semicolons.
 
-define build.name = "SKGJAMAICA"
+define build.name = "dse"
 
 
 ## Sounds and music ############################################################
 
-## These three variables control, among other things, which mixers are shown
-## to the player by default. Setting one of these to False will hide the
-## appropriate mixer.
+## These three variables control which mixers are shown to the player by
+## default. Setting one of these to False will hide the appropriate mixer.
 
 define config.has_sound = True
 define config.has_music = True
@@ -75,11 +80,6 @@ define config.has_voice = True
 
 define config.enter_transition = dissolve
 define config.exit_transition = dissolve
-
-
-## Between screens of the game menu.
-
-define config.intra_transition = dissolve
 
 
 ## A transition that is used after a game has been loaded.
@@ -143,7 +143,7 @@ default preferences.afm_time = 15
 ## This generally should not be changed, and if it is, should always be a
 ## literal string, not an expression.
 
-define config.save_directory = "SKGJAMAICA-1752245355"
+define config.save_directory = "DSE4-1505751864"
 
 
 ## Icon ########################################################################
@@ -195,10 +195,9 @@ init python:
     build.documentation('*.html')
     build.documentation('*.txt')
 
-
-## A Google Play license key is required to perform in-app purchases. It can be
-## found in the Google Play developer console, under "Monetize" > "Monetization
-## Setup" > "Licensing".
+## A Google Play license key is required to download expansion files and perform
+## in-app purchases. It can be found on the "Services & APIs" page of the Google
+## Play developer console.
 
 # define build.google_play_key = "..."
 
