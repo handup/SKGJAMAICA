@@ -20,25 +20,24 @@ init python:
     register_stat("Intelligence", "intelligence", 10, 100)
     register_stat("Relaxation", "relaxation", hidden=True)
 
-    dp_period("Whole day", "day")
+    dp_period("Whole day", "day_act")
     dp_choice("Go In Dungeon", "dungeon_start")
-    dp_choice("Train in Town", "town")
+    dp_choice("Train in Town", "day_parted")
 
-    if (__periods["day"] == town)
-        dp_period("Morning", "morning_act")
-        dp_choice("Train", "train")
-        dp_choice("Fight Orcs", "cut")
+    dp_period("Morning", "morning_act")
+    dp_choice("Train", "train")
+    dp_choice("Fight Orcs", "cut")
     
         # This is an example of an event that should only show up under special circumstances
-        dp_choice("Fly to the Moon", "fly", show="strength >= 100 and intelligence >= 100")
+    dp_choice("Fly to the Moon", "fly", show="strength >= 100 and intelligence >= 100")
 
-        dp_period("Afternoon", "afternoon_act")
-        dp_choice("Study Magic", "study")
-        dp_choice("Pray", "hang")
+    dp_period("Afternoon", "afternoon_act")
+    dp_choice("Study Magic", "study")
+    dp_choice("Pray", "hang")
 
-        dp_period("Evening", "evening_act")
-        dp_choice("Exercise", "exercise")
-        dp_choice("Play Dice Games", "play")
+    dp_period("Evening", "evening_act")
+    dp_choice("Exercise", "exercise")
+    dp_choice("Play Dice Games", "play")
 
     
 # This is the entry point into the game.
@@ -60,7 +59,7 @@ label start:
 
     "There is no easy way to say this. I realized something"
 
-    "I do't want to die a virgin."
+    "I don't want to die a virgin."
 
     # We jump to day to start the first day.
     jump day
@@ -83,19 +82,29 @@ label day:
     # (especially dp_period_acts) to reflect the choices the
     # user has available.
 
+
+    $ day_act = None
+    window show
+    call screen day_planner(["Whole day"])
+    window auto
+
+    $ period = "day"
+    $ act = day_act
+    call events_run_period
+    
+label day_parted:
+    # Now, we call the day planner, which may set the act variables
+    # to new values. We call it with a list of periods that we want
+    # to compute the values for.
     $ morning_act = None
     $ afternoon_act = None
     $ evening_act = None
     $ narrator("What should I do today?", interact=False)
-    window show
-    
-
-    # Now, we call the day planner, which may set the act variables
-    # to new values. We call it with a list of periods that we want
-    # to compute the values for.
     call screen day_planner(["Morning", "Afternoon", "Evening"])
     window auto
+
     
+
     # We process each of the three periods of the day, in turn.
 label morning:
 

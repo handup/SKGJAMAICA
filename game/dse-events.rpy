@@ -16,6 +16,7 @@ init:
     # First up, we define some simple events for the various actions, that
     # are run only if no higher-priority event is about to occur.
     
+    $ event("dungeon_kickstart", "act == 'dungeon_start'", event.only(), priority=200)
     $ event("class", "act == 'class'", event.only(), priority=200)
     $ event("class_bad", "act == 'class'", priority=210)
     $ event("cut1", "act == 'cut'", event.choose_one('cut'), priority=200)
@@ -101,7 +102,9 @@ init:
     $ event('both_confess', 'act == "class"',
             event.depends("dontsee"), event.depends("cookies"),
             event.once(), priority = 50)
-     
+
+label dungeon_kickstart:
+    jump dungeon_start
 
 label class:
 
