@@ -6,12 +6,13 @@ label dungeon_start:
     python:
         
         # Create skills (name, type, hit, power)
-        attack = Skill("Attack", "attack", 70, 20)
+        attack = Skill("Attack", "attack", 70, 50)
+        goblin_attack = Skill("Attack", "attack", 70, 10)
         escape = Skill("Escape", "escape")
         
         # Create battle actors (name, max_hp, skills)
         hero = Actor("Hero",100, [attack,escape])
-        goblin = Actor("Goblin",40, [attack])
+        goblin = Actor("Goblin",40, [goblin_attack])
         
         # Create a dungeon stage (map,enemy)
         # "1" means wall, "0" means path. 
@@ -20,7 +21,7 @@ label dungeon_start:
             "1111011001",
             "1000000001",
             "1110111101",
-            "1000000001",
+            "h000000001",
             "1111111111",
             ],
             enemy=goblin)

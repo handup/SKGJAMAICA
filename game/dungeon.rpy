@@ -133,7 +133,9 @@ label dungeon:
         # Check events. If it happens, call a label or jump out to a label.
         if here.stage.enemy is not None and renpy.random.random()< .2:
             call battle(player=hero, enemy=here.stage.enemy)
-                
+        
+        if here.stage.map[here.y][here.x] == "h":
+            jump night
         # Otherwise, call the move screen
         $ renpy.block_rollback()
         call screen move
