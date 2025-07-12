@@ -71,7 +71,8 @@ label battle(player, enemy):
     $ _rollback=False
     show screen battle_ui
     "[enemy.name] appeared"
-    
+    show image [enemy.image]
+
     # Main phase
     call _battle(player, enemy)
     

@@ -11,8 +11,9 @@ label dungeon_start:
         escape = Skill("Escape", "escape")
         
         # Create battle actors (name, max_hp, skills)
-        hero = Actor("Hero",100, [attack,escape])
-        goblin = Actor("Goblin",40, [goblin_attack])
+        hero = Actor("Hero", 100, [attack,escape])
+        goblin = Actor("Goblin", 40, [goblin_attack])
+        goblin.image = "images/goblin.webp"
         
         # Create a dungeon stage (map,enemy)
         # "1" means wall, "0" means path. 
@@ -36,4 +37,4 @@ label dungeon_start:
     call dungeon
     
     # To start battling, call the label battle with 2 actor objects: player and enemy.
-    call battle(hero,goblin)
+    call battle(hero, goblin)
