@@ -17,7 +17,7 @@
 # Set up a default schedule.
 init python:
     register_stat("Strength", "strength", 10, 100)
-    register_stat("Intelligence", "intelligence", 10, 100)
+    register_stat("Intelligence", "intelligence", 80, 100)
     register_stat("Relaxation", "relaxation", hidden=True)
 
     dp_period("Whole day", "day_act")
@@ -42,13 +42,13 @@ init python:
     
 # This is the entry point into the game.
 label start:
-
     # Initialize the default values of some of the variables used in
     # the game.
     $ day = 0
 
+    image club = "images/town.png"
     # Show a default background.
-    scene black
+    scene club
 
     # The script here is run before any event.
 

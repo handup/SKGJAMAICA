@@ -6,7 +6,7 @@ label dungeon_start:
     python:
         
         # Create skills (name, type, hit, power)
-        attack = Skill("Attack", "attack", 70, 50)
+        attack = Skill("Attack", "attack", intelligence, strength)
         goblin_attack = Skill("Attack", "attack", 70, 10)
         escape = Skill("Escape", "escape")
         

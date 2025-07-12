@@ -17,7 +17,7 @@ init:
     # are run only if no higher-priority event is about to occur.
     
     $ event("dungeon_kickstart", "act == 'dungeon_start'", event.only(), priority=200)
-    $ event("class", "act == 'class'", event.only(), priority=200)
+    $ event("train", "act == 'train'", event.only(), priority=200)
     $ event("class_bad", "act == 'class'", priority=210)
     $ event("cut1", "act == 'cut'", event.choose_one('cut'), priority=200)
     $ event("cut2", "act == 'cut'", event.choose_one('cut'), priority=200)
@@ -106,12 +106,13 @@ init:
 label dungeon_kickstart:
     jump dungeon_start
 
-label class:
+label train:
 
     "I make it to class just in time, and proceed to listen to the
     teacher droning on about a wide range of topics, none of which
     are remotely interesting."
 
+    $ strength += 10
     return
 
 # For test purposes only.
