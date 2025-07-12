@@ -136,6 +136,13 @@ label dungeon:
         
         if here.stage.map[here.y][here.x] == "h":
             jump night
+            
+        if here.stage.map[front1.y][front1.x] == "h":
+            image stairs = "images/stairs.png"
+            transform stairs: 
+                zoom 0.5
+            show stairs
+        
         # Otherwise, call the move screen
         $ renpy.block_rollback()
         call screen move
