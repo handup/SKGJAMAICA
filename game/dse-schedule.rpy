@@ -20,20 +20,25 @@ init python:
     register_stat("Intelligence", "intelligence", 10, 100)
     register_stat("Relaxation", "relaxation", hidden=True)
 
-    dp_period("Morning", "morning_act")
-    dp_choice("Train", "train")
-    dp_choice("Fight Orcs", "cut")
+    dp_period("Whole day", "day")
+    dp_choice("Go In Dungeon", "dungeon_start")
+    dp_choice("Train in Town", "town")
+
+    if (__periods["day"] == town)
+        dp_period("Morning", "morning_act")
+        dp_choice("Train", "train")
+        dp_choice("Fight Orcs", "cut")
     
-    # This is an example of an event that should only show up under special circumstances
-    dp_choice("Fly to the Moon", "fly", show="strength >= 100 and intelligence >= 100")
+        # This is an example of an event that should only show up under special circumstances
+        dp_choice("Fly to the Moon", "fly", show="strength >= 100 and intelligence >= 100")
 
-    dp_period("Afternoon", "afternoon_act")
-    dp_choice("Study Magic", "study")
-    dp_choice("Pray", "hang")
+        dp_period("Afternoon", "afternoon_act")
+        dp_choice("Study Magic", "study")
+        dp_choice("Pray", "hang")
 
-    dp_period("Evening", "evening_act")
-    dp_choice("Exercise", "exercise")
-    dp_choice("Play Dice Games", "play")
+        dp_period("Evening", "evening_act")
+        dp_choice("Exercise", "exercise")
+        dp_choice("Play Dice Games", "play")
 
     
 # This is the entry point into the game.
