@@ -139,9 +139,18 @@ label dungeon:
             
         if here.stage.map[front1.y][front1.x] == "h":
             image stairs = "images/stairs.png"
-            transform stairs: 
+            show stairs:
                 zoom 0.5
-            show stairs
+                xalign 0.5
+                yalign 0.8 
+    
+        if front2.x >= 0 and front2.y >= 0 and front2.y <= len(here.stage.map) and front2.x <= len(here.stage.map[front2.y]):
+            if here.stage.map[front2.y][front2.x] == "h":
+                image stairs = "images/stairs.png"
+                show stairs:
+                    zoom 0.25
+                    xalign 0.5
+                    yalign 0.5 
         
         # Otherwise, call the move screen
         $ renpy.block_rollback()
