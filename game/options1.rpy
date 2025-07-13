@@ -23,12 +23,12 @@ init -1 python hide:
     ## This controls the title of the window, when Ren'Py is
     ## running in a window.
 
-    config.window_title = u"Dungeon_Crawl"
+    config.window_title = u"SKG-JAMAICA"
 
     # These control the name and version of the game, that are reported
     # with tracebacks and other debugging logs.
-    config.name = "Dungeon_Crawl"
-    config.version = "2.0"
+    config.name = "SKG_JAM"
+    config.version = "0.5"
 
     #########################################
     # Themes
@@ -262,7 +262,7 @@ init -1 python hide:
     ## stored. (It needs to be set early, before any other init code
     ## is run, so the persistent information can be found by the init code.)
 python early:
-    config.save_directory = "Dungeon_Crawl-1392604382"
+    config.save_directory = "SKJ-1392604382"
 
 init -1 python hide:
     #########################################
@@ -295,12 +295,12 @@ init python:
     ## The name that's used for directories and archive files. For example, if
     ## this is 'mygame-1.0', the windows distribution will be in the
     ## directory 'mygame-1.0-win', in the 'mygame-1.0-win.zip' file.
-    build.directory_name = "Dungeon_Crawl-2.0"
+    build.directory_name = "skg-0.1"
 
     ## The name that's uses for executables - the program that users will run
     ## to start the game. For example, if this is 'mygame', then on Windows,
     ## users can click 'mygame.exe' to start the game.
-    build.executable_name = "Dungeon_Crawl"
+    build.executable_name = "SKG_Jamaica"
 
     ## If True, Ren'Py will include update information into packages. This
     ## allows the updater to run.
