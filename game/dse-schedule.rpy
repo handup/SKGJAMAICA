@@ -16,8 +16,9 @@
 
 # Set up a default schedule.
 init python:
-    register_stat("Strength", "strength", 10, 100)
-    register_stat("Intelligence", "intelligence", 80, 100)
+    register_stat("Strength", "strength", 30, 100)
+    register_stat("Dexterity", "dexterity", 10, 100)
+    register_stat("Stamina", "stamina", 20, 100)
     register_stat("Relaxation", "relaxation", hidden=True)
 
     dp_period("Whole day", "day_act")
@@ -42,6 +43,7 @@ init python:
     
 # This is the entry point into the game.
 label start:
+    play music "town.ogg"
     # Initialize the default values of some of the variables used in
     # the game.
     $ day = 0
@@ -52,8 +54,7 @@ label start:
 
     # The script here is run before any event.
 
-    "After getting infected with a lethal dose of poison from swallowing a yummy looking 
-    mushroom I now have only 20 days left to live"
+    "After getting infected with a lethal dose of poison from swallowing a yummy looking mushroom I now have only 20 days left to live"
 
     "I have been a paladin of the most esteemed order of Mithras, so I ought to spend the rest of my days in prayer, but..."
 

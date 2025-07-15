@@ -136,8 +136,17 @@ label dungeon:
         
         if here.stage.map[here.y][here.x] == "h":
             scene black
-            "Time for bed."
-            jump night
+            "You leave level [level]"
+
+            python:
+                if level == 1:
+                    level += 1
+                    renpy.jump("dungeon_2")
+                elif level == 2:
+                    level += 1
+                    renpy.jump("dungeon_3")
+                elif level > 2:
+                    renpy.jump("night")
             
         if here.stage.map[front1.y][front1.x] == "h":
             image stairs = "images/stairs.png"

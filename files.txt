@@ -127,6 +127,7 @@ saves/auto-7-LT1.save
 saves/auto-8-LT1.save
 saves/auto-9-LT1.save
 saves/persistent
+audio/town.wav
 tl/None/common.rpym
 tl/None/common.rpymc
 cache/bytecode-39.rpyb
@@ -134,5 +135,7 @@ cache/py3analysis.rpyb
 cache/screens.rpyb
 cache/shaders.txt
 images/bg club.jpg
+images/goblin.png
 images/goblin.webp
+images/stairs.png
 images/town.png
