@@ -13,14 +13,14 @@ label dungeon_start:
         
         # Create battle actors (name, max_hp, skills)
         hero = Actor("Hero", 100 + stamina, [attack,escape])
-        goblin = Actor("Goblin", 40, [goblin_attack])
-        goblin.image = "images/goblin.webp"
+        goblin = Actor("Feline Warrior", 40, [goblin_attack])
+        goblin.image = "images/cat.png"
         
         # Create a dungeon stage (map,enemy)
         # "1" means wall, "0" means path. 
         stage1=Stage([
             "1111111111",
-            "1111011001",
+            "11110110g1",
             "1000000001",
             "1110111101",
             "h000000001",
@@ -59,7 +59,7 @@ label dungeon_2:
         stage2=Stage([
             "111111111111",
             "111101100111",
-            "1001h0000011",
+            "1001h0000g11",
             "100111101111",
             "100000000001",
             "111111111111",
@@ -97,7 +97,7 @@ label dungeon_3:
         # "1" means wall, "0" means path. 
         stage3=Stage([
             "1111111111h1",
-            "100000001101",
+            "1000000g1101",
             "100100001101",
             "100111101101",
             "110001100001",

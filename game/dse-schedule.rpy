@@ -48,7 +48,7 @@ label start:
     # the game.
     $ day = 0
 
-    image club = "images/town.png"
+    image club = "images/town.jpg"
     # Show a default background.
     scene club
 

@@ -93,6 +93,8 @@ image right1 = Transform("left1.png", xzoom=-1)
 image front2 = "front2.png"
 image left2 = "left2.png"
 image right2 = Transform("left2.png", xzoom=-1)    
+image stairs = "images/stairs.webp"
+image girl = "images/girl.png"
     
 label dungeon:
     # To start exploring, call or jump to this label
@@ -147,23 +149,41 @@ label dungeon:
                     renpy.jump("dungeon_3")
                 elif level > 2:
                     renpy.jump("night")
+
+        if here.stage.map[here.y][here.x] == "g":
+            call girl_dialogue
             
         if here.stage.map[front1.y][front1.x] == "h":
-            image stairs = "images/stairs.png"
             show stairs:
-                zoom 0.5
+                zoom 0.25
                 xalign 0.5
                 yalign 0.8 
     
-        if front2.x >= 0 and front2.y >= 0 and front2.y < len(here.stage.map) and front2.x < len(here.stage.map[front2.y]):
-            if here.stage.map[front2.y][front2.x] == "h":
-                image stairs = "images/stairs.png"
-                show stairs:
-                    zoom 0.25
-                    xalign 0.5
-                    yalign 0.5 
+        if here.stage.map[front1.y][front1.x] == "g":
+            show girl:
+                zoom 0.25
+                xalign 0.5
+                yalign 0.8 
+    
+        if here.stage.map[front1.y][front1.x] != "1":
+            if front2.x >= 0 and front2.y >= 0 and front2.y < len(here.stage.map) and front2.x < len(here.stage.map[front2.y]):
+                if here.stage.map[front2.y][front2.x] == "h":
+                    show stairs:
+                        zoom 0.12
+                        xalign 0.5
+                        yalign 0.5 
+                if here.stage.map[front2.y][front2.x] == "g":
+                    show girl:
+                        zoom 0.12
+                        xalign 0.5
+                        yalign 0.5 
         
         # Otherwise, call the move screen
         $ renpy.block_rollback()
         call screen move
         $ here=_return
+
+label girl_dialogue:
+    show girl:
+        zoom 0.8
+    "Test1"

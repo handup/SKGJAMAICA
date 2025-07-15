@@ -85,6 +85,7 @@ label battle(player, enemy):
     elif _return is "escape":
         "You escaped"        
     hide screen battle_ui
+    hide image [enemy.image]
     $ _rollback=True
     return
     
