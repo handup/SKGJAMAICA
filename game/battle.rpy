@@ -83,7 +83,12 @@ label battle(player, enemy):
     elif _return is "win":
         "You won"
     elif _return is "escape":
-        "You escaped"        
+        "You escaped back to town"
+        hide screen battle_ui
+        hide image [enemy.image]
+        play music "town.ogg"
+        scene club
+        jump night        
     hide screen battle_ui
     hide image [enemy.image]
     $ _rollback=True
