@@ -9,7 +9,7 @@ label dungeon_start:
         # Create skills (name, type, hit, power)
         attack = Skill("Attack", "attack", 50 + dexterity / 2, strength)
         goblin_attack = Skill("Attack", "attack", 70, 10 - stamina / 10)
-        escape = Skill("Escape", "escape")
+        escape = Skill("Escape to Town", "escape")
         
         # Create battle actors (name, max_hp, skills)
         hero = Actor("Hero", 100 + stamina, [attack,escape])
@@ -79,10 +79,8 @@ label dungeon_2:
     call battle(hero, goblin)
 
 label dungeon_3:
-    
     # Initializing data
     python:
-        
         # Create skills (name, type, hit, power)
         attack = Skill("Attack", "attack", 50 + dexterity / 2, strength)
         goblin_attack = Skill("Attack", "attack", 70, 10 - stamina / 10)
@@ -90,8 +88,8 @@ label dungeon_3:
         
         # Create battle actors (name, max_hp, skills)
         hero = Actor("Hero", 100 + stamina, [attack,escape])
-        goblin = Actor("Goblin", 40, [goblin_attack])
-        goblin.image = "images/cat2.png"
+        goblin = Actor("Medusa", 40, [goblin_attack])
+        goblin.image = "medusa2.png"
         
         # Create a dungeon stage (map,enemy)
         # "1" means wall, "0" means path. 

@@ -56,7 +56,6 @@ define gui.hover_muted_color = '#005b7a'
 define gui.text_color = '#ffffff'
 define gui.interface_text_color = '#ffffff'
 
-
 ## Fonts and Font Sizes ########################################################
 
 ## The font used for in-game text.
@@ -91,7 +90,7 @@ define gui.title_text_size = 42
 
 ## The images used for the main and game menus.
 define gui.main_menu_background = "gui/main_menu.png"
-define gui.game_menu_background = "gui/game_menu.png"
+define gui.game_menu_background = "gui/main_menu.png"
 
 ## Should we show the name and version of the game?
 define gui.show_name = True

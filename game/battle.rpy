@@ -69,9 +69,10 @@ label battle(player, enemy):
     # Copying enemy object prevents modifying an original data.
     $ enemy=copy(enemy) 
     $ _rollback=False
-    show screen battle_ui
     "[enemy.name] appeared"
     show image [enemy.image]
+    window hide
+    show screen battle_ui
 
     # Main phase
     call _battle(player, enemy)

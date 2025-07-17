@@ -27,7 +27,6 @@ left1.png
 left2.png
 options.rpy
 options.rpyc
-options1.rpy
 options1.rpyc
 renpy_warp_1.35.0_fa4e5e97.rpe.py
 screens.rpy
@@ -37,7 +36,6 @@ script_version.rpy
 script_version.rpyc
 gui/bubble.png
 gui/frame.png
-gui/game_menu.png
 gui/main_menu.png
 gui/namebox.png
 gui/notify.png
@@ -127,6 +125,9 @@ saves/auto-7-LT1.save
 saves/auto-8-LT1.save
 saves/auto-9-LT1.save
 saves/persistent
+audio/dungeon.ogg
+audio/town.ogg
+audio/town.opus
 audio/town.wav
 tl/None/common.rpym
 tl/None/common.rpymc
@@ -134,8 +135,15 @@ cache/bytecode-39.rpyb
 cache/py3analysis.rpyb
 cache/screens.rpyb
 cache/shaders.txt
-images/bg club.jpg
-images/goblin.png
-images/goblin.webp
-images/stairs.png
-images/town.png
+images/cat.png
+images/cat2.png
+images/druid.jpg
+images/druidess.png
+images/girl.png
+images/main_menu.jpg
+images/medusa.jpg
+images/medusa.png
+images/medusa2.png
+images/snakelady.png
+images/stairs.webp
+images/town.jpg
