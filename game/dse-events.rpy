@@ -48,26 +48,6 @@ init:
             # This takes priority over the study event.
             priority=190)
 
-    # She asks to borrow our pen. 
-    $ event("borrow_pen",
-            # This takes place when we go to study, and we have an int
-            # >= 50. 
-            "act == 'study' and intelligence >= 50",
-            # It runs only once.
-            event.once(),
-            # It requires the introduction event to have run at least
-            # one day before.
-            event.depends("introduction"))
-
-    # After the pen, she smiles when she sees us.
-    $ event("gg_smiling", "act == 'study'",
-            event.solo(), event.depends("borrow_pen"),
-            priority = 180)
-
-    # The bookslide.
-    $ event("bookslide", "act == 'study' and intelligence == 100",
-            event.once(), event.depends("borrow_pen"))
-
     # She makes us cookies.
     $ event("cookies", "act == 'study'",
             event.once(), event.depends("bookslide"))
@@ -130,8 +110,7 @@ label class_bad:
 label cut1:
 
     "I cut class, and spend the morning goofing off instead."
-    $ intelligence -= 10
-    $ relaxation += 10
+    $ dexterity -= 10
 
     return
 
@@ -154,8 +133,7 @@ label study:
     "I head on down to the library, and start reading about the topics
     I should have been reading about in class."
 
-    $ intelligence += 10
-    $ relaxation -= 10    
+    $ dexterity += 10    
     return
 
 label hang:
@@ -163,7 +141,7 @@ label hang:
     "I spend the afternoon hanging out with my friends, killing
     some time."
      
-    $ relaxation += 10    
+    $ dexterity += 10    
     return
 
 label exercise:
@@ -171,8 +149,7 @@ label exercise:
     "I decide to go out for a run through the town, to keep myself in
     shape."
 
-    $ strength += 10
-    $ relaxation -= 10    
+    $ strength += 10    
     return
 
 label play:
@@ -181,7 +158,6 @@ label play:
     rolling small cities up into balls."
 
     $ strength -= 10
-    $ relaxation += 10    
     return
 
 
@@ -310,7 +286,6 @@ label gg_smiling:
     book."
 
     $ intelligence += 10
-    $ relaxation -= 10    
 
     return
 
@@ -504,8 +479,7 @@ label cantcatchme:
     "She pulls out past me, and disappears into the distance. One day
     I'll catch up to her."
 
-    $ strength += 10
-    $ relaxation -= 10    
+    $ strength += 10 
 
     return
 
@@ -549,8 +523,7 @@ label caughtme:
 
     "I nod a third time, and we take off, running side by side."
 
-    $ strength += 10
-    $ relaxation -= 10    
+    $ strength += 10 
 
     return
 
@@ -584,8 +557,7 @@ label apart:
     "She's right, of course, and I redouble my efforts to try to keep
     up with her."
 
-    $ strength += 10
-    $ relaxation -= 10    
+    $ strength += 10    
     return
 
 label pothole:

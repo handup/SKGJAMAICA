@@ -23,12 +23,13 @@ init -1 python:
         Class used for calculating relative coordinate.   
         '''
         
-        def __init__(self, stage=None, y=0, x=0, dy=0, dx=0):
+        def __init__(self, stage=None, y=0, x=0, dy=0, dx=0, lastCommand = "front"):
             self.stage=stage
             self.y=y
             self.x=x
             self.dy=dy
             self.dx=dx 
+            self.lastCommand=lastCommand
             
     class Minimap(object):
         
@@ -103,9 +104,9 @@ label dungeon:
     while True:
         # Calculate relative coordinates
         python:            
-            turnright=Coordinate(here.stage, here.y,here.x, here.dx,-here.dy)
-            turnleft=Coordinate(here.stage, here.y, here.x, -here.dx,here.dy)
-            turnback=Coordinate(here.stage, here.y,here.x, -here.dy,-here.dx)
+            turnright=Coordinate(here.stage, here.y,here.x, here.dx,-here.dy, "turnright")
+            turnleft=Coordinate(here.stage, here.y, here.x, -here.dx,here.dy, "turnleft")
+            turnback=Coordinate(here.stage, here.y,here.x, -here.dy,-here.dx, "turnback")
             right0=Coordinate(here.stage, here.y+here.dx,here.x-here.dy, here.dy,here.dx)
             left0=Coordinate(here.stage, here.y-here.dx,here.x+here.dy, here.dy,here.dx)
             front1=Coordinate(here.stage, here.y+here.dy,here.x+here.dx, here.dy,here.dx)
@@ -131,40 +132,41 @@ label dungeon:
         python:
             for i in [left1, right1, front1, left0, right0, here]:
                 here.stage.mapped[i.y][i.x]=1
-                
-        # Check events. If it happens, call a label or jump out to a label.
-        if here.stage.enemy is not None and renpy.random.random()< .2:
-            call battle(player=hero, enemy=here.stage.enemy)
-        
-        if here.stage.map[here.y][here.x] == "h":
-            scene black
-            "You leave level [level]"
 
-            python:
-                if level == 1:
-                    level += 1
-                    renpy.jump("dungeon_2")
-                elif level == 2:
-                    level += 1
-                    renpy.jump("dungeon_3")
-                elif level > 2:
-                    renpy.jump("night")
-
-        if here.stage.map[here.y][here.x] == "g":
-            call girl_dialogue
+        if here.lastCommand == "front":
+            # Check events. If it happens, call a label or jump out to a label.
+            if here.stage.enemy is not None and renpy.random.random()< .2:
+                call battle(player=hero, enemy=here.stage.enemy)
             
+            if here.stage.map[here.y][here.x] == "h":
+                scene black
+                "You leave level [level]"
+
+                python:
+                    if level == 1:
+                        level += 1
+                        renpy.jump("dungeon_2")
+                    elif level == 2:
+                        level += 1
+                        renpy.jump("dungeon_3")
+                    elif level > 2:
+                        renpy.jump("night")
+
+            if here.stage.map[here.y][here.x] == "g":
+                call girl_dialogue
+                
         if here.stage.map[front1.y][front1.x] == "h":
             show stairs:
                 zoom 0.25
                 xalign 0.5
                 yalign 0.8 
-    
+        
         if here.stage.map[front1.y][front1.x] == "g":
             show girl:
                 zoom 0.25
                 xalign 0.5
                 yalign 0.8 
-    
+        
         if here.stage.map[front1.y][front1.x] != "1":
             if front2.x >= 0 and front2.y >= 0 and front2.y < len(here.stage.map) and front2.x < len(here.stage.map[front2.y]):
                 if here.stage.map[front2.y][front2.x] == "h":
@@ -177,7 +179,7 @@ label dungeon:
                         zoom 0.12
                         xalign 0.5
                         yalign 0.5 
-        
+            
         # Otherwise, call the move screen
         $ renpy.block_rollback()
         call screen move
