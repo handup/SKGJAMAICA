@@ -355,11 +355,7 @@ screen main_menu():
 
     style_prefix "main_menu"
 
-    add gui.main_menu_background
-
-    ## This empty frame darkens the main menu.
-    frame:
-        pass
+    add "gui/main_menu.png"
 
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
@@ -1632,10 +1628,14 @@ screen main_menu:
 
     # This ensures that any other menu screen is replaced.
     tag menu
-
+    
     # The background of the main menu.
     window:
         style "mm_root"
+        
+    style_prefix "main_menu"
+
+    add "gui/main_menu.png"
 
     # The main menu buttons.
     frame:
