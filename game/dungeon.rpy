@@ -189,4 +189,62 @@ label dungeon:
 label girl_dialogue:
     show girl:
         zoom 0.8
-    "Test1"
+    python:
+        if level == 1:
+            renpy.jump("sower_1")
+        if level == 2:
+            renpy.jump("sower_2")
+        if level == 3:
+            renpy.jump("sower_3")
+
+label sower_1:
+    if not strengthFlag and not dexterityFlag:
+        "A woman? Could it be who I think it is?"
+        sower "Ah, is it you who is sowing the garden on the surface? You, lemon tree gardener?"
+        you "I think I am only here to harvest the lemons. I know nothing about caring for the lemon trees."
+        sower "I see. It is strange you are spending time here then."
+        you "I would like to speak to the one who has sown the seeds. Once the harvest is done I will likely die. I do not think I am meant to live past this harvest."
+        you "But if I spoke to the one who has sown the lemon seeds, perhaps I can convince her. Maybe I could grow some lemon trees myself. Then maybe I won't die."
+        sower "You are speaking to the Sower herself."
+        you "So, my intuition was right then..."
+        sower "You fight well at this level of the dungeon. You have some natural aptitude. What is it you value in a fight?"
+        menu:
+            "Strength":
+                $ strengthFlag = True
+                pass
+            "Dexterity":
+                $ dexterityFlag = True 
+                pass   
+        sower "I see you are making good use of it"
+        "Perhaps you can lean into your strengths more. Next time you enter the Dungeon, you will have an additional skill."
+        sower "I hope to meet you again in a deeper level. We can continue this discussion then, should you survive."
+    else:
+        "Meet me in the lower levels"
+    jump sower_end
+
+label sower_2:
+    if not trainingFlag:
+        you "Sower of seeds! I have found you again."
+        sower "Still alive I see. I have given it some thought."
+        sower "You harvest the lemons every day. Surely you have the seeds to start your own garden already."
+        you "I cannot. If you don't bless they will bear fruit. I am not sure how I know this, but it must be true."
+        sower "So it's my permission you want."
+        sower "I will give you a gift, Harvester. You must train for the third and last level." 
+        sower "I will clear your mind and give you focus so that your training may bear bigger and better fruits."
+        sower "We may continue the conversation then." 
+        "My stats will increase faster whilst training now"
+        $ trainingFlag = True
+    else:
+        "Meet me in the lower levels"
+    jump sower_end
+
+label sower_3:
+    sower "Would you look on my face, Harvester?... or perhaps I ought to call you Gardener now."
+    image druidess = Transform("images/druidess.png", zoom=1.25)
+    show druidess
+    sower "Harvester and Sower. Perhaps together we may survive. Maybe not forever. Nothing is forever, Gardener. But perhaps we may grow to see the old age upon each other's face."
+    centered "You've won the game. Congratulations!"
+    $ MainMenu(confirm=False)()
+
+label sower_end:
+    pass

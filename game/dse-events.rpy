@@ -18,6 +18,12 @@ init:
     
     $ event("dungeon_kickstart", "act == 'dungeon_start'", event.only(), priority=200)
     $ event("train", "act == 'train'", event.only(), priority=200)
+
+    $ event("footwork", "act == 'footwork'", event.only(), priority=200)
+
+    $ event("running", "act == 'running'", event.only(), priority=200)
+
+    $ event("rest", "act == 'rest'", event.only(), priority=200)
     $ event("class_bad", "act == 'class'", priority=210)
     $ event("cut1", "act == 'cut'", event.choose_one('cut'), priority=200)
     $ event("cut2", "act == 'cut'", event.choose_one('cut'), priority=200)
@@ -88,13 +94,56 @@ label dungeon_kickstart:
 
 label train:
 
-    "I make it to class just in time, and proceed to listen to the
-    teacher droning on about a wide range of topics, none of which
-    are remotely interesting."
+    "You take advantage of some makeshifts weights and train your body." 
+    
+    "You realize that you are catching on to the secret of bodybuilding. It's just a matter of consistency."
 
-    $ strength += 10
+    "Strength increases, Hitpoints decrease due to strain."
+    if trainingFlag:
+        $ strength += 20
+    else:
+        $ strength += 10
+    $ hitpoints -= 10
+
     return
 
+
+label footwork:
+    "As you do your sword drills, they become just a bit easier, more instinctive, more satisfying." 
+
+    "You know that it all adds up as you develop keener movements, keener instincts." 
+
+    "Dexterity increases, Hitpoints decrease due to strain."
+    if trainingFlag:
+        $ dexterity += 20
+    else:
+        $ dexterity += 10
+    $ hitpoints -= 10
+    return
+
+label running:
+    "At some point you feel as if you were going to drop. But you push past." 
+    
+    "You resolve to continue pushing yourself in the future. Perhaps there's more to you than you thought."
+
+    "Dexterity increases, Hitpoints decrease due to strain."
+
+    if trainingFlag:
+        $ stamina += 20
+    else:
+        $ stamina += 10
+    $ hitpoints -= 10
+    return
+
+label rest:
+    "There are limits to what the body can do. Even if you only have a handful of days left, it is good to be mindful" 
+    
+    "You rest."
+
+    "Your hitpoints revert back to their maximum which is equal to 100 + your stamina"
+
+    $ hitpoints = 100 + stamina
+    return
 # For test purposes only.
 label class_bad:
 

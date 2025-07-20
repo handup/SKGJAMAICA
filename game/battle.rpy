@@ -82,8 +82,7 @@ label battle(player, enemy):
     
     # Result
     if _return is "lose":
-        "Gameover"
-        $renpy.full_restart()
+        jump endingA
     elif _return is "win":
         "You won"
     elif _return is "escape":

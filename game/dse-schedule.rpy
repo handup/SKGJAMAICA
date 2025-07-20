@@ -28,8 +28,13 @@ init python:
 
     dp_choice("Go running", "running")
     dp_choice("Rest in", "rest")
+    sower = Character("Sower of Seeds", color="#009900")
+    you = Character("You", color="#e8e7ec")
+    lemon = Character("Lemon trees", color="#d2ee1e")
+    trainingFlag = False
+    strengthFlag = False
+    dexterityFlag = False    
 
-    
 # This is the entry point into the game.
 label start:
     play music "town.ogg"
@@ -43,16 +48,20 @@ label start:
 
     # The script here is run before any event.
 
-    "After getting infected with a lethal dose of poison from swallowing a yummy looking mushroom I now have only 20 days left to live"
+    "You've awoken for the first time in a town whose name you do not know. To your surprise you are alive."
 
-    "I have been a paladin of the most esteemed order of Mithras, so I ought to spend the rest of my days in prayer, but..."
+    "Inside of the houses you can see lights but no people. There are, however, gardens filled with lemon trees."
 
-    "There is no easy way to say this. I realized something"
+    "The fruits shine yellow, like globes. You feel like you are here to pick these lemons and gather them."
 
-    "If ten small days, thou let'st slip,\n
+    "As you pluck the first fruit you hear the leaves rusting in the wind as if a voice spoke."
+
+    lemon "If ten small days, thou let'st slip,\n
     Like water from thy fingertips.\n
     Now shadows stretch, the stars align...\n
     Thou didst die once… now a second time."
+
+    "Ten days does not feel like a long time. I better make them count."
 
     # We jump to day to start the first day.
     jump day
@@ -67,7 +76,7 @@ label day:
     # We may also want to compute the name for the day here, but
     # right now we don't bother.
 
-    "It's day %(day)d."
+    centered "It's day %(day)d."
 
     # Here, we want to set up some of the default values for the
     # day planner. In a more complicated game, we would probably
@@ -75,9 +84,11 @@ label day:
     # (especially dp_period_acts) to reflect the choices the
     # user has available.
 
-
+    "I spend the better part of the day plucking and gathering the lemons, but I still have time to do some other things."
     window hide
 
+    if day > 10 or hitpoints < 1:
+        jump endingA
     $ day_act = None
     call screen day_planner(["Whole day"])
     window auto
@@ -104,4 +115,11 @@ label night:
     # on forever, until an event ends the game.
     jump day
          
-
+label endingA:
+    "You've done your job taking care of these lemon trees." 
+    "But now the work is done and there is no other reason to be here"
+    image druidess = Transform("images/druidess.png", zoom=1.25)
+    show druidess
+    sower "It is time. If you had chosen differently, perhaps we would meet in better circumstances"
+    "You feel swallowed by the void..."
+    $ MainMenu(confirm=False)()

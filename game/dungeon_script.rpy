@@ -8,11 +8,21 @@ label dungeon_start:
         level = 1
         # Create skills (name, type, hit, power)
         attack = Skill("Attack", "attack", 50 + dexterity / 2, strength)
-        goblin_attack = Skill("Attack", "attack", 70, 10 - stamina / 10)
+        goblin_attack = Skill("Attack", "attack", 70 - dexterity / 4, 10 - stamina / 10)
         escape = Skill("Escape to Town", "escape")
+
+        heroSkills = [attack,escape]
         
+        if strengthFlag:
+            strengthAttack = Skill("Power Attack", "attack", 60, strength * 2)
+            heroSkills = [attack, strengthAttack ,escape]
+        
+        if dexterityFlag:
+            strengthAttack = Skill("Finesse Attack", "attack", 50 + dexterity / 2, dexterity)
+            heroSkills = [attack,escape]
+
         # Create battle actors (name, max_hp, skills)
-        hero = Actor("Hero", 100 + stamina, [attack,escape], hitpoints)
+        hero = Actor("Hero", 100 + stamina, heroSkills, hitpoints)
         goblin = Actor("Feline Warrior", 40, [goblin_attack])
         goblin.image = "images/cat.png"
         
@@ -45,11 +55,11 @@ label dungeon_2:
     # Initializing data
     python:
         # Create skills (name, type, hit, power)
-        goblin_attack = Skill("Attack", "attack", 80, 30 - stamina / 10)
+        goblin_attack = Skill("Attack", "attack", 80 - dexterity / 4, 30 - stamina / 10)
         escape = Skill("Escape", "escape")
         
         # Create battle actors (name, max_hp, skills)
-        goblin = Actor("Feline Paladin", 40, [goblin_attack])
+        goblin = Actor("Feline Paladin", 60, [goblin_attack])
         goblin.image = "images/cat2.png"
         
         # Create a dungeon stage (map,enemy)
@@ -77,14 +87,15 @@ label dungeon_2:
     call battle(hero, goblin)
 
 label dungeon_3:
+    play music "finallevel.ogg"
     # Initializing data
     python:
         # Create skills (name, type, hit, power)
-        goblin_attack = Skill("Attack", "attack", 100, 60 - stamina / 10)
+        goblin_attack = Skill("Attack", "attack", 100 - dexterity / 4, 60 - stamina / 10)
         escape = Skill("Escape", "escape")
         
         # Create battle actors (name, max_hp, skills)
-        goblin = Actor("Medusa", 40, [goblin_attack])
+        goblin = Actor("Medusa", 100, [goblin_attack])
         goblin.image = "medusa2.png"
         
         # Create a dungeon stage (map,enemy)
