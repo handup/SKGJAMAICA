@@ -78,7 +78,7 @@ label battle(player, enemy):
     show screen battle_ui
 
     # Main phase
-    call _battle(player, enemy) from _call__battle
+    call _battle(player, enemy)
     
     # Result
     if _return is "lose":

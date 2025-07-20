@@ -95,7 +95,7 @@ label day:
 
     $ period = "day"
     $ act = day_act
-    call events_run_period from _call_events_run_period
+    call events_run_period
 
 
 label night:
@@ -109,7 +109,7 @@ label night:
     "It's getting late, so I decide to go to sleep."
 
     # We call events_end_day to let it know that the day is done.
-    call events_end_day from _call_events_end_day
+    call events_end_day
 
     # And we jump back to day to start the next day. This goes
     # on forever, until an event ends the game.

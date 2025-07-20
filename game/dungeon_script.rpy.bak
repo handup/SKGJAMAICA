@@ -45,10 +45,10 @@ label dungeon_start:
     $ here=Coordinate(stage1,2,2,0,1) 
     
     # To start exploring, call or jump to the label dungeon. 
-    call dungeon from _call_dungeon
+    call dungeon
     
     # To start battling, call the label battle with 2 actor objects: player and enemy.
-    call battle(hero, goblin) from _call_battle_1
+    call battle(hero, goblin)
 
 label dungeon_2:
     
@@ -81,10 +81,10 @@ label dungeon_2:
     $ here=Coordinate(stage2,2,2,0,1) 
     
     # To start exploring, call or jump to the label dungeon. 
-    call dungeon from _call_dungeon_1
+    call dungeon
     
     # To start battling, call the label battle with 2 actor objects: player and enemy.
-    call battle(hero, goblin) from _call_battle_2
+    call battle(hero, goblin)
 
 label dungeon_3:
     play music "finallevel.ogg"
@@ -117,7 +117,7 @@ label dungeon_3:
     $ here=Coordinate(stage3,2,2,0,1) 
     
     # To start exploring, call or jump to the label dungeon. 
-    call dungeon from _call_dungeon_2
+    call dungeon
     
     # To start battling, call the label battle with 2 actor objects: player and enemy.
-    call battle(hero, goblin) from _call_battle_3
+    call battle(hero, goblin)

@@ -136,7 +136,7 @@ label dungeon:
         if here.lastCommand == "front":
             # Check events. If it happens, call a label or jump out to a label.
             if here.stage.enemy is not None and renpy.random.random()< .2:
-                call battle(player=hero, enemy=here.stage.enemy) from _call_battle
+                call battle(player=hero, enemy=here.stage.enemy)
             
             if here.stage.map[here.y][here.x] == "h":
                 scene black
@@ -154,7 +154,7 @@ label dungeon:
                         renpy.jump("night")
 
             if here.stage.map[here.y][here.x] == "g":
-                call girl_dialogue from _call_girl_dialogue
+                call girl_dialogue
                 
         if here.stage.map[front1.y][front1.x] == "h":
             show stairs:
