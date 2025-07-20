@@ -19,26 +19,15 @@ init python:
     register_stat("Strength", "strength", 30, 100)
     register_stat("Dexterity", "dexterity", 10, 100)
     register_stat("Stamina", "stamina", 20, 100)
-    register_stat("Relaxation", "relaxation", hidden=True)
+    register_stat("Hit points", "hitpoints", 120, 200)
 
     dp_period("Whole day", "day_act")
     dp_choice("Go In Dungeon", "dungeon_start")
-    dp_choice("Train in Town", "day_parted")
+    dp_choice("Strength Training", "train")
+    dp_choice("Practice Footwork", "footwork")
 
-    dp_period("Morning", "morning_act")
-    dp_choice("Train", "train")
-    dp_choice("Fight Orcs", "cut")
-    
-        # This is an example of an event that should only show up under special circumstances
-    dp_choice("Fly to the Moon", "fly", show="strength >= 100 and intelligence >= 100")
-
-    dp_period("Afternoon", "afternoon_act")
-    dp_choice("Study Magic", "study")
-    dp_choice("Pray", "hang")
-
-    dp_period("Evening", "evening_act")
-    dp_choice("Exercise", "exercise")
-    dp_choice("Play Dice Games", "play")
+    dp_choice("Go running", "running")
+    dp_choice("Rest in", "rest")
 
     
 # This is the entry point into the game.
@@ -60,7 +49,10 @@ label start:
 
     "There is no easy way to say this. I realized something"
 
-    "I don't want to die a virgin."
+    "If ten small days, thou let'st slip,\n
+    Like water from thy fingertips.\n
+    Now shadows stretch, the stars align...\n
+    Thou didst die once… now a second time."
 
     # We jump to day to start the first day.
     jump day
@@ -84,74 +76,14 @@ label day:
     # user has available.
 
 
+    window hide
+
     $ day_act = None
-    window show
     call screen day_planner(["Whole day"])
     window auto
 
     $ period = "day"
     $ act = day_act
-    call events_run_period
-    
-label day_parted:
-    # Now, we call the day planner, which may set the act variables
-    # to new values. We call it with a list of periods that we want
-    # to compute the values for.
-    $ morning_act = None
-    $ afternoon_act = None
-    $ evening_act = None
-    $ narrator("What should I do today?", interact=False)
-    call screen day_planner(["Morning", "Afternoon", "Evening"])
-    window auto
-
-    
-
-    # We process each of the three periods of the day, in turn.
-label morning:
-
-    # Tell the user what period it is.
-    centered "Morning"
-
-    # Set these variables to appropriate values, so they can be
-    # picked up by the expression in the various events defined below. 
-    $ period = "morning"
-    $ act = morning_act
-    
-    # Execute the events for the morning.
-    call events_run_period
-
-    # That's it for the morning, so we fall through to the
-    # afternoon.
-
-label afternoon:
-
-    # It's possible that we will be skipping the afternoon, if one
-    # of the events in the morning jumped to skip_next_period. If
-    # so, we should skip the afternoon.
-    if check_skip_period():
-        jump evening
-
-    # The rest of this is the same as for the morning.
-
-    centered "Afternoon"
-
-    $ period = "afternoon"
-    $ act = afternoon_act
-
-    call events_run_period
-
-
-label evening:
-    
-    # The evening is the same as the afternoon.
-    if check_skip_period():
-        jump night
-
-    centered "Evening"
-
-    $ period = "evening"
-    $ act = evening_act
-    
     call events_run_period
 
 

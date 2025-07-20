@@ -19,7 +19,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("Dating Sim Engine")
+define config.name = _("Ten nights picking lemons")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
@@ -36,14 +36,14 @@ define config.version = "4.0"
 ## Text that is placed on the game's about screen. To insert a blank line
 ## between paragraphs, write \n\n.
 
-define gui.about = _("Ren'Py Dating Sim Engine\n\nBy renpytom, maintained by Andrea Landaker")
+define gui.about = _("SKG Community Game Jam entry.")
 
 
 ## A short name for the game used for executables and directories in the built
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,
 ## or semicolons.
 
-define build.name = "dse"
+define build.name = "skg"
 
 
 ## Sounds and music ############################################################

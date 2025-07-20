@@ -22,10 +22,13 @@ init -1 python:
         Class used for battle characters.
         '''        
         
-        def __init__(self, name, max_hp=0, skills=[]):
+        def __init__(self, name, max_hp=0, skills=[], hp=None):
             self.name=name
             self.max_hp=max_hp
-            self.hp=max_hp
+            if(hp is None):
+                self.hp=max_hp
+            else:
+                self.hp=hp
             self.skills = skills
                         
         def attack(self,skill,target):
@@ -84,6 +87,7 @@ label battle(player, enemy):
     elif _return is "win":
         "You won"
     elif _return is "escape":
+        $ hitpoints = hero.hp
         "You escaped back to town"
         hide screen battle_ui
         hide image [enemy.image]

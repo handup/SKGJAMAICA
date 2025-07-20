@@ -150,6 +150,7 @@ label dungeon:
                         level += 1
                         renpy.jump("dungeon_3")
                     elif level > 2:
+                        hitpoints = hero.hp
                         renpy.jump("night")
 
             if here.stage.map[here.y][here.x] == "g":

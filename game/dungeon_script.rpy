@@ -12,7 +12,7 @@ label dungeon_start:
         escape = Skill("Escape to Town", "escape")
         
         # Create battle actors (name, max_hp, skills)
-        hero = Actor("Hero", 100 + stamina, [attack,escape])
+        hero = Actor("Hero", 100 + stamina, [attack,escape], hitpoints)
         goblin = Actor("Feline Warrior", 40, [goblin_attack])
         goblin.image = "images/cat.png"
         
@@ -45,12 +45,10 @@ label dungeon_2:
     # Initializing data
     python:
         # Create skills (name, type, hit, power)
-        attack = Skill("Attack", "attack", 50 + dexterity / 2, strength)
-        goblin_attack = Skill("Attack", "attack", 70, 10 - stamina / 10)
+        goblin_attack = Skill("Attack", "attack", 80, 30 - stamina / 10)
         escape = Skill("Escape", "escape")
         
         # Create battle actors (name, max_hp, skills)
-        hero = Actor("Hero", 100 + stamina, [attack,escape])
         goblin = Actor("Feline Paladin", 40, [goblin_attack])
         goblin.image = "images/cat2.png"
         
@@ -82,12 +80,10 @@ label dungeon_3:
     # Initializing data
     python:
         # Create skills (name, type, hit, power)
-        attack = Skill("Attack", "attack", 50 + dexterity / 2, strength)
-        goblin_attack = Skill("Attack", "attack", 70, 10 - stamina / 10)
+        goblin_attack = Skill("Attack", "attack", 100, 60 - stamina / 10)
         escape = Skill("Escape", "escape")
         
         # Create battle actors (name, max_hp, skills)
-        hero = Actor("Hero", 100 + stamina, [attack,escape])
         goblin = Actor("Medusa", 40, [goblin_attack])
         goblin.image = "medusa2.png"
         
