@@ -76,7 +76,9 @@ label day:
     # We may also want to compute the name for the day here, but
     # right now we don't bother.
 
+    scene black
     centered "It's day %(day)d."
+    scene club
 
     # Here, we want to set up some of the default values for the
     # day planner. In a more complicated game, we would probably
@@ -104,7 +106,9 @@ label night:
     # events can be run. We put some boilerplate end-of-day text
     # in here.
 
+    scene black
     centered "Night"
+    scene club
 
     "It's getting late, so I decide to go to sleep."
 

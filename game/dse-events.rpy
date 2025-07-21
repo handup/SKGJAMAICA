@@ -126,7 +126,7 @@ label running:
     
     "You resolve to continue pushing yourself in the future. Perhaps there's more to you than you thought."
 
-    "Dexterity increases, Hitpoints decrease due to strain."
+    "Stamina increases, Hitpoints decrease due to strain."
 
     if trainingFlag:
         $ stamina += 20

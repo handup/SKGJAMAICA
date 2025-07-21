@@ -194,23 +194,6 @@ style input:
     xalign gui.dialogue_text_xalign
     xmaximum gui.dialogue_width
 
-
-## Choice screen ###############################################################
-##
-## This screen is used to display the in-game choices presented by the menu
-## statement. The one parameter, items, is a list of objects, each with caption
-## and action fields.
-##
-## http://www.renpy.org/doc/html/screen_special.html#choice
-
-screen choice(items):
-    style_prefix "choice"
-
-    vbox:
-        for i in items:
-            textbutton i.caption action i.action
-
-
 ## When this is true, menu captions will be spoken by the narrator. When false,
 ## menu captions will be displayed as empty buttons.
 define config.narrator_menu = True
@@ -1520,6 +1503,7 @@ screen choice:
         style "menu_window"
         xalign 0.5
         yalign 0.5
+        background Frame("gui/frame.png")
 
         vbox:
             style "menu"
@@ -1533,10 +1517,10 @@ screen choice:
                         action action
                         style "menu_choice_button"
 
-                        text caption style "menu_choice"
+                        text caption xalign 0.5 style "menu_choice"
 
                 else:
-                    text caption style "menu_caption"
+                    text caption xalign 0.5 style "menu_caption"
 
 init -2:
     $ config.narrator_menu = True
